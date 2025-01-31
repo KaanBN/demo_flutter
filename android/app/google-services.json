@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "278599365525",
+    "project_id": "flutter-dating-e03f2",
+    "storage_bucket": "flutter-dating-e03f2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278599365525:android:6255cf8f3897d0e29f3c9c",
+        "android_client_info": {
+          "package_name": "com.kaanbn.galleria"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVxduloGlO67OpHP8gJ9afelSZdOi_wc8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
