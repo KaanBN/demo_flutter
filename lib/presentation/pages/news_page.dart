@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:galleria/presentation/pages/weather_page.dart';
 import '../state/news_provider.dart';
 
 class NewsPage extends ConsumerWidget {
@@ -10,7 +11,20 @@ class NewsPage extends ConsumerWidget {
     final newsAsyncValue = ref.watch(newsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Güncel Haberler")),
+      appBar: AppBar(
+        title: const Text("Güncel Haberler"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.cloud),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const WeatherPage(city: "İstanbul")
+              ));
+            },
+          ),
+        ],
+      ),
       body: newsAsyncValue.when(
         data: (newsList) => ListView.builder(
           itemCount: newsList.length,
