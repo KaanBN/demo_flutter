@@ -15,9 +15,9 @@ class SourceModel {
     required this.name,
   });
 
-  factory SourceModel.fromJson(Map<String, dynamic> json) => _$SourceFromJson(json);
+  factory SourceModel.fromJson(Map<String, dynamic> json) => _$SourceModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$SourceToJson(this);
+  Map<String, dynamic> toJson() => _$SourceModelToJson(this);
 
   /// Converts `SourceModel` to `Source` Entity
   Source toEntity() {

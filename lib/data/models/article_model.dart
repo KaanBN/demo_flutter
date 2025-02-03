@@ -34,9 +34,9 @@ class ArticleModel {
     required this.content,
   });
 
-  factory ArticleModel.fromJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
+  factory ArticleModel.fromJson(Map<String, dynamic> json) => _$ArticleModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ArticleToJson(this);
+  Map<String, dynamic> toJson() => _$ArticleModelToJson(this);
 
   /// Converts `ArticleModel` to `Article` Entity
   Article toEntity() {

@@ -1,18 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:galleria/core/errors/failures.dart';
 
-import '../constants/api_keys.dart';
-
 class ApiClient {
   final Dio _dio;
   ApiClient()
     : _dio = Dio(BaseOptions(
-      baseUrl: "https://newsapi.org/v2/",
+      baseUrl: "https://newsapi.org/v2",
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 15),
-      queryParameters: {
-        "apiKey": ApiKeys.newsApiKey,
-      },
       headers: {
         "Content-Type": "application/json"
       },
@@ -74,6 +69,7 @@ class ApiClient {
   }
 
   Failure _handleDioError(DioException e) {
+    print("_handleDioError: $e");
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.receiveTimeout:

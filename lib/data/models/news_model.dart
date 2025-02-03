@@ -1,4 +1,4 @@
-import 'package:galleria/domain/entities/news_response.dart';
+import 'package:galleria/domain/entities/news.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'article_model.dart';
@@ -24,8 +24,8 @@ class NewsModel {
 
   Map<String, dynamic> toJson() => _$NewsModelToJson(this);
 
-  NewsResponse toEntity() {
-    return NewsResponse(
+  News toEntity() {
+    return News(
       status: status,
       totalResults: totalResults,
       articles: articles.map((article) => article.toEntity()).toList(),

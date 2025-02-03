@@ -1,11 +1,11 @@
 import 'article.dart';
 
-class NewsResponse {
+class News {
   final String status;
   final int totalResults;
   final List<Article> articles;
 
-  NewsResponse({
+  News({
     required this.status,
     required this.totalResults,
     required this.articles,
