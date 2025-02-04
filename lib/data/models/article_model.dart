@@ -5,10 +5,10 @@ import 'source_model.dart';
 
 part 'article_model.g.dart';
 
-@HiveType(typeId: 0) // Hive için type ID ekledik
+@HiveType(typeId: 0) // TypeID for Hive
 @JsonSerializable()
-class ArticleModel {
-  @HiveField(0) // Hive için field index
+class ArticleModel extends HiveObject {
+  @HiveField(0) // Field Index for Hive
   @JsonKey(name: "source")
   final SourceModel source;
 
