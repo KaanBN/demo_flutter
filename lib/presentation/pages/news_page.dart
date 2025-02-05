@@ -20,6 +20,10 @@ class NewsPage extends ConsumerWidget {
             return ListTile(
               title: Text(news.title),
               subtitle: Text(news.description ?? ""),
+              leading: Image.network(
+                news.urlToImage ?? "",
+                errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
+              ),
             );
           },
         ),
