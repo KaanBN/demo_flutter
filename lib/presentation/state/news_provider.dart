@@ -1,9 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:galleria/data/datasources/local/news_local_data_source.dart';
-import 'package:galleria/data/datasources/remote/news_remote_data_source.dart';
-import 'package:galleria/data/repositories/news_repository_impl.dart';
 import 'package:galleria/domain/entities/news.dart';
-import 'package:galleria/domain/repositories/news_repository.dart';
+import 'package:galleria/domain/usecases/get_news_use_case.dart';
+import '../../data/repositories/news_repository_impl.dart';
+import '../../domain/repositories/news_repository.dart';
+import '../../data/datasources/remote/news_remote_data_source.dart';
+import '../../data/datasources/local/news_local_data_source.dart';
 import '../../core/network/api_client.dart';
 
 /// Provides the local database instance
@@ -23,8 +24,14 @@ final newsRepositoryProvider = FutureProvider<NewsRepository>((ref) async {
   return NewsRepositoryImpl(remoteDataSource: remoteDataSource, localDataSource: localDataSource);
 });
 
-/// Fetches top headlines using the repository
+/// Provides the `GetNewsUseCase` instance
+final getNewsUseCaseProvider = Provider<GetNewsUseCase>((ref) {
+  final repository = ref.read(newsRepositoryProvider).value!;
+  return GetNewsUseCase(repository);
+});
+
+/// Fetches top headlines using the use case
 final newsProvider = FutureProvider<News>((ref) async {
-  final repository = await ref.watch(newsRepositoryProvider.future);
-  return repository.getTopHeadlines();
+  final getNewsUseCase = ref.read(getNewsUseCaseProvider);
+  return getNewsUseCase();
 });
