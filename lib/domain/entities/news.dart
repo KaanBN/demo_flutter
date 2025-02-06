@@ -1,4 +1,4 @@
-import 'article.dart';
+import 'package:galleria/domain/entities/article.dart';
 
 class News {
   final String status;

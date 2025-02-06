@@ -1,6 +1,6 @@
+import 'package:galleria/domain/entities/article.dart';
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import '../../domain/entities/article.dart';
 import 'source_model.dart';
 
 part 'article_model.g.dart';

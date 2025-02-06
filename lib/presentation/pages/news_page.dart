@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:galleria/presentation/state/news_provider.dart';
 
-import '../state/news_provider.dart';
 
 class NewsPage extends ConsumerWidget {
   const NewsPage({super.key});

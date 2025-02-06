@@ -1,7 +1,7 @@
+import 'package:galleria/data/models/article_model.dart';
 import 'package:galleria/domain/entities/news.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'article_model.dart';
 
 part 'news_model.g.dart';
 

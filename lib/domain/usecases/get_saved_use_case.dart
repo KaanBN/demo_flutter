@@ -1,6 +1,5 @@
 import 'package:galleria/domain/entities/article.dart';
-
-import '../repositories/news_repository.dart';
+import 'package:galleria/domain/repositories/news_repository.dart';
 
 class GetSavedNewsUseCase {
   final NewsRepository repository;
