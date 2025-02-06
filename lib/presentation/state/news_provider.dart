@@ -28,7 +28,15 @@ final newsRepositoryProvider = FutureProvider<NewsRepository>((ref) async {
 
 /// Provides the `GetNewsUseCase` instance
 final getNewsUseCaseProvider = Provider<GetNewsUseCase>((ref) {
-  final repository = ref.read(newsRepositoryProvider).value!;
+  final repository = ref.watch(newsRepositoryProvider).maybeWhen(
+    data: (repo) => repo,
+    orElse: () => null,
+  );
+
+  if (repository == null) {
+    throw Exception("Repository is still loading...");
+  }
+
   return GetNewsUseCase(repository);
 });
 
@@ -40,6 +48,6 @@ final saveNewsUseCaseProvider = Provider<SaveNewsUseCase>((ref) {
 
 /// Fetches top headlines using the use case
 final newsProvider = FutureProvider<List<Article>>((ref) async {
-  final getNewsUseCase = ref.read(getNewsUseCaseProvider);
+  final getNewsUseCase = ref.watch(getNewsUseCaseProvider);
   return getNewsUseCase();
 });

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:galleria/presentation/state/news_provider.dart';
-
+import 'package:galleria/presentation/widgets/article_card.dart';
 
 class NewsPage extends ConsumerWidget {
   const NewsPage({super.key});
@@ -16,19 +16,27 @@ class NewsPage extends ConsumerWidget {
         data: (articlesList) => ListView.builder(
           itemCount: articlesList.length,
           itemBuilder: (context, index) {
-            final news = articlesList[index];
-            return ListTile(
-              title: Text(news.title),
-              subtitle: Text(news.description ?? ""),
-              leading: Image.network(
-                news.urlToImage ?? "",
-                errorBuilder: (context, error, stackTrace) => const Icon(Icons.error),
-              ),
-            );
+            return ArticleCard(article: articlesList[index]);
           },
         ),
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) => Center(child: Text("Hata oluştu: ${error.toString()}")),
+        error: (error, _) {
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Hata oluştu!"),
+                const SizedBox(height: 10),
+                Text(error.toString(), style: const TextStyle(color: Colors.red)),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  onPressed: () => ref.refresh(newsProvider),
+                  child: const Text("Tekrar Dene"),
+                ),
+              ],
+            ),
+          );
+        },
       ),
     );
   }
