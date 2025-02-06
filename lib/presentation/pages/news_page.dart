@@ -13,10 +13,10 @@ class NewsPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: const Text("Haberler")),
       body: newsAsyncValue.when(
-        data: (newsList) => ListView.builder(
-          itemCount: newsList.articles.length,
+        data: (articlesList) => ListView.builder(
+          itemCount: articlesList.length,
           itemBuilder: (context, index) {
-            final news = newsList.articles[index];
+            final news = articlesList[index];
             return ListTile(
               title: Text(news.title),
               subtitle: Text(news.description ?? ""),

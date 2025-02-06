@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:galleria/core/errors/failures.dart';
 
 class ApiClient {
@@ -69,7 +70,9 @@ class ApiClient {
   }
 
   Failure _handleDioError(DioException e) {
-    print("_handleDioError: $e");
+    if (kDebugMode) {
+      print("_handleDioError: $e");
+    }
     switch (e.type) {
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.receiveTimeout:

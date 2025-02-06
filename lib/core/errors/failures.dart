@@ -12,17 +12,17 @@ abstract class Failure {
 
 /// API Errors
 class ServerFailure extends Failure {
-  ServerFailure(String message, [StackTrace? stackTrace]) : super(message, stackTrace);
+  ServerFailure(super.message, [super.stackTrace]);
 }
 
 /// Ağ Connection Errors
 class NetworkFailure extends Failure {
-  NetworkFailure(String message, [StackTrace? stackTrace]) : super(message, stackTrace);
+  NetworkFailure(super.message, [super.stackTrace]);
 }
 
 /// Auth Errors
 class AuthFailure extends Failure {
-  AuthFailure(String message, [StackTrace? stackTrace]) : super(message, stackTrace);
+  AuthFailure(super.message, [super.stackTrace]);
 }
 
 /// Unknown Errors
