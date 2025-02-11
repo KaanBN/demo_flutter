@@ -8,7 +8,6 @@ import 'package:galleria/domain/repositories/news_repository.dart';
 import 'package:galleria/domain/usecases/get_news_use_case.dart';
 import 'package:galleria/domain/usecases/save_news_use_case.dart';
 
-
 /// Provides the local database instance
 final newsLocalDataSourceProvider = FutureProvider<NewsLocalDataSource>((ref) async {
   return await NewsLocalDataSource.create();
